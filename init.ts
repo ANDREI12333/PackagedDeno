@@ -19,11 +19,13 @@ try {
 } catch (e) {
 	console.log("Deno.json does not exist. Trying deno.jsonc");
 }
-try {
-	const data = Deno.readTextFileSync("deno.jsonc");
-	let denoFileExists = true;
-} catch (e) {
-	console.log("Deno.jsonc does not exist. Creating deno file");
+if (!denoFileExists) {
+	try {
+		const data = Deno.readTextFileSync("deno.jsonc");
+		let denoFileExists = true;
+	} catch (e) {
+		console.log("Deno.jsonc does not exist. Creating deno file");
+	}
 }
 
 if (!denoFileExists) {
@@ -51,7 +53,7 @@ try {
 	console.error("Is GitHub Down?");
 }
 if (!fetchIssues) {
-	const import_map_content = await import_map_content_fetch.text;
+	const import_map_content = import_map_content_fetch.text;
 	Deno.writeTextFileSync("import_map.json", import_map_content);
 
 	console.log(
