@@ -14,20 +14,23 @@ let denoFileExists = false;
 
 console.log("Checking for deno project files.");
 try {
-	const data = Deno.readTextFile("deno.json");
+	const data = Deno.readTextFileSync("deno.json");
 	denoFileExists = true;
 } catch (e) {
 	console.log("Deno.json does not exist. Trying deno.jsonc");
 }
 try {
-	const data = Deno.readTextFile("deno.jsonc");
+	const data = Deno.readTextFileSync("deno.jsonc");
 	denoFileExists = true;
 } catch (e) {
 	console.log("Deno.jsonc does not exist. Quitting.");
 }
 
 if (!denoFileExists) {
-	Deno.writeTextFile("deno.json", '{"importMap": "import_map.json"}');
+	Deno.writeTextFile(
+		"deno.json",
+		JSON.stringify({ importMap: "import_map.json" })
+	);
 } else {
 	console.warn(
 		"You will need to manually specify the import map in the deno.json file!"
@@ -45,7 +48,7 @@ try {
 	console.error("Is GitHub Down?");
 }
 const import_map_content = await import_map_content_fetch.text();
-Deno.writeTextFile("import_map.json", import_map_content);
+Deno.writeTextFileSync("import_map.json", import_map_content);
 
 console.log(
 	"You can now use any PackagedDeno module! (If a package is in the repo but cant be used rerun this command even if you already did it!)"
