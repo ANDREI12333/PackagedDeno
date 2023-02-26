@@ -40,7 +40,7 @@ if (!denoFileExists) {
 	);
 }
 
-let fetchIssues = false;
+let fetchIssues = fetch;
 const import_map_content_fetch = false;
 try {
 	const import_map_content_fetch = await fetch(import_map_content_url);
