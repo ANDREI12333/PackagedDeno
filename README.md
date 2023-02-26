@@ -3,6 +3,11 @@ Use all the packages you need.
 
 [Back to top](https://github.com/ANDREI12333/PackagedDeno#readme)
 
+# Contribuations
+Please add any module you'd prefer as a pull request / issue
+
+[Back to top](https://github.com/ANDREI12333/PackagedDeno#readme)
+
 # Usage
 Copy all the contents from `import_map.json` and paste them into a import map into your own project. Aswell as adding
 ```json
