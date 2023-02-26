@@ -1,1 +1,6 @@
-{}
+{
+	"imports": {
+		"std": "https://deno.land/std",
+		"base64": "https://denopkg.com/chiefbiiko/base64/mod.ts"
+	}
+}
