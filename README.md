@@ -4,10 +4,13 @@ Use all the packages you need.
 [Back to top](https://github.com/ANDREI12333/PackagedDeno#readme)
 
 # Usage
-Run the following command in your project's directory:
-```bash
-deno run --allow-read --allow-write --allow-net https://raw.githubusercontent.com/ANDREI12333/PackagedDeno/main/init.ts
+Copy all the contents from `import_map.json` and paste them into a import map into your own project. Aswell as adding
+```json
+{
+	"importMap": "import_map.json"
+}
 ```
+or copying the `deno.json` file
 
 [Back to top](https://github.com/ANDREI12333/PackagedDeno#readme)
 
