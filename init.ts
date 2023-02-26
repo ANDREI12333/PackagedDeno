@@ -12,6 +12,7 @@ const import_map_content_url =
 	"https://raw.githubusercontent.com/ANDREI12333/PackagedDeno/main/import_map.json";
 let denoFileExists = false;
 
+console.log("Checking for deno project files.");
 try {
 	const data = Deno.readTextFile("deno.json");
 	denoFileExists = true;
