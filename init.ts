@@ -15,13 +15,13 @@ let denoFileExists = false;
 console.log("Checking for deno project files.");
 try {
 	const data = Deno.readTextFileSync("deno.json");
-	denoFileExists = true;
+	let denoFileExists = true;
 } catch (e) {
 	console.log("Deno.json does not exist. Trying deno.jsonc");
 }
 try {
 	const data = Deno.readTextFileSync("deno.jsonc");
-	denoFileExists = true;
+	let denoFileExists = true;
 } catch (e) {
 	console.log("Deno.jsonc does not exist. Creating deno file");
 }
@@ -45,7 +45,7 @@ const import_map_content_fetch = false;
 try {
 	const import_map_content_fetch = await fetch(import_map_content_url);
 } catch (e) {
-	fetchIssues = true;
+	let fetchIssues = true;
 	console.error(`Fetching Import Map failed with: ${e}`);
 	console.error("Are you connected to the internet?");
 	console.error("Is GitHub Down?");
