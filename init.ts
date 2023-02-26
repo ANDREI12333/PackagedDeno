@@ -23,7 +23,7 @@ try {
 	const data = Deno.readTextFileSync("deno.jsonc");
 	denoFileExists = true;
 } catch (e) {
-	console.log("Deno.jsonc does not exist. Quitting.");
+	console.log("Deno.jsonc does not exist. Creating deno file");
 }
 
 if (!denoFileExists) {
@@ -40,17 +40,24 @@ if (!denoFileExists) {
 	);
 }
 
+let fetchIssues = false;
+const import_map_content_fetch = false;
 try {
 	const import_map_content_fetch = await fetch(import_map_content_url);
 } catch (e) {
+	fetchIssues = true;
 	console.error(`Fetching Import Map failed with: ${e}`);
 	console.error("Are you connected to the internet?");
 	console.error("Is GitHub Down?");
 }
-const import_map_content = await import_map_content_fetch.text();
-Deno.writeTextFileSync("import_map.json", import_map_content);
+if (!fetchIssues) {
+	const import_map_content = await import_map_content_fetch.text();
+	Deno.writeTextFileSync("import_map.json", import_map_content);
 
-console.log(
-	"You can now use any PackagedDeno module! (If a package is in the repo but cant be used rerun this command even if you already did it!)"
-);
+	console.log(
+		"You can now use any PackagedDeno module! (If a package is in the repo but cant be used rerun this command even if you already did it!)"
+	);
+} else {
+	console.log("Fetching Import Map failed with a unknown error.");
+}
 exit();
