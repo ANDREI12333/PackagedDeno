@@ -51,7 +51,7 @@ try {
 	console.error("Is GitHub Down?");
 }
 if (!fetchIssues) {
-	const import_map_content = await import_map_content_fetch.text();
+	const import_map_content = await import_map_content_fetch.text;
 	Deno.writeTextFileSync("import_map.json", import_map_content);
 
 	console.log(
